@@ -17,12 +17,14 @@ public class Calculator {
 	 * total variable.
 	 */
 	private int total;
+	private String history;
 	
 	/**
 	 * Constructor
 	 */
 	public Calculator () {
 		total = 0;
+		history = "0";
 	}
 	
 	/**
@@ -40,9 +42,8 @@ public class Calculator {
 	 * @param value - integer value
 	 */
 	public void add (int value) {
-		
 		total = total + value;
-		
+		setHistory(value, "add");
 	}
 	
 	/**
@@ -52,6 +53,7 @@ public class Calculator {
 	 */
 	public void subtract (int value) {
 		total = total - value;
+		setHistory(value, "sub");
 	}
 	
 	/**
@@ -61,6 +63,7 @@ public class Calculator {
 	 */
 	public void multiply (int value) {
 		total = total * value;
+		setHistory(value, "mul");
 	}
 	
 	/**
@@ -70,6 +73,33 @@ public class Calculator {
 	 */
 	public void divide (int value) {
 		total = total / value;
+		setHistory(value, "div");
+	}
+	
+	/**
+	 * Adding the operation and value to the string history
+	 * 
+	 * @param value the value that will be added to the string after the operation symbol
+	 * @param operation will be added as a string symbol between the previous and current value
+	 */
+	private void setHistory (int value, String operation) {
+		
+		String temp = "";
+		
+		if (operation == "add"){
+			temp = " + ";
+		}
+		else if (operation == "sub"){
+			temp = " - ";
+		}
+		else if (operation == "mul"){
+			temp = " * ";
+		}
+		else if (operation == "div"){
+			temp = " / ";
+		}
+		
+		history = history + temp + value; 
 	}
 	
 	/**
@@ -78,6 +108,6 @@ public class Calculator {
 	 * @return string history
 	 */
 	public String getHistory () {
-		return "";
+		return history;
 	}
 }

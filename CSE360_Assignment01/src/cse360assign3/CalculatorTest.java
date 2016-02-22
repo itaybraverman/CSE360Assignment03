@@ -33,7 +33,7 @@ public class CalculatorTest {
 	public void testAdd() {
 		Calculator test = new Calculator();
 		test.add(5);
-		// Checkign basic addition of an int.
+		// Checking basic addition of an integer.
 		assertEquals(5, test.getTotal());
 	}
 
@@ -41,7 +41,7 @@ public class CalculatorTest {
 	public void testSubtract() {
 		Calculator test = new Calculator();
 		test.subtract(5);
-		// Checkign subtruction from initial value of 0
+		// Checking subtraction from initial value of 0
 		assertEquals(-5, test.getTotal());
 	}
 
@@ -70,12 +70,20 @@ public class CalculatorTest {
 		test.subtract(5);
 		test.divide(0);
 	}
+	
+	@Test
+	public void testSetHistory() {
+		Calculator test = new Calculator();
+		test.subtract(-5);
+		// Checking if setHistory works with negative
+		assertEquals("0 - -5", test.getHistory());
+	}
 
 	@Test
 	public void testGetHistory() {
 		Calculator test = new Calculator();
 		// Checking to see if string returns empty
-		assertEquals("", test.getHistory());
+		assertEquals("0", test.getHistory());
 	}
 
 }
